@@ -3,19 +3,13 @@ package com.farukgenc.boilerplate.springboot.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
-/**
- * Created on Ağustos, 2020
- *
- * @author Faruk
- */
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
-@Entity
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "USERS")
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -23,6 +17,8 @@ public class User {
 	private Long id;
 
 	private String name;
+
+	private String lastName;
 
 	@Column(unique = true)
 	private String username;

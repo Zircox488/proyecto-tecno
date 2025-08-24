@@ -16,8 +16,11 @@ public class ReservationResource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long reservationId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resource_id", nullable = false)
+    private Resource resource;
 
-    private Long resourceId;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id", nullable = false)
+    private Reservation reservation;
 }

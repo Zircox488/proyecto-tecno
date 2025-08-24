@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Reservations")
@@ -16,10 +17,6 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long talentId;
-
-    private Long expertId;
-
     private Date dateTimeStart;
 
     private Date endDateTime;
@@ -29,5 +26,19 @@ public class Reservation {
     private Date creationDate;
 
     private Date lastModifiedDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expert_id", nullable = false)
+    private Expert expert;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "talent_id", nullable = false)
+    private Talent talent;
+
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DigitalRecord> digitalRecords;
+
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReservationResource> reservationResources;
 
 }

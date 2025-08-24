@@ -21,11 +21,12 @@ public class SessionLog {
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
     private Date loginAt;
 
     @Column(nullable = false)
     private String ipAddress;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

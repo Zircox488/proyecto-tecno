@@ -20,9 +20,6 @@ public class EquipmentHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long resourceId;
-
     @Column(nullable = true)
     private Date maintenanceDate;
 
@@ -31,4 +28,8 @@ public class EquipmentHistory {
 
     @Column(length = 500)
     private String incidentReported;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resource_id", nullable = false)
+    private Resource resource;
 }

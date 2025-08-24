@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "resources")
 @Getter
@@ -41,4 +43,14 @@ public class Resource {
 
     @Column(nullable = false)
     private Long servicelineId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_line_id", nullable = false)
+    private ServiceLine serviceLine;
+
+    @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EquipmentHistory> equipmentHistories;
+
+    @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReservationResource> reservationResources;
 }

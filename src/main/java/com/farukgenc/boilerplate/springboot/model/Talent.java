@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Talents")
@@ -15,4 +16,10 @@ public class Talent extends User {
     
     @Column(unique = true)
     private String associatedProject;
+
+    @OneToMany(mappedBy = "talent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DigitalRecord> digitalRecords;
+
+    @OneToMany(mappedBy = "talent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 }

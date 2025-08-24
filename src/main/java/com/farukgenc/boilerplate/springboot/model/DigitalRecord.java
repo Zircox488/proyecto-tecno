@@ -16,12 +16,6 @@ public class DigitalRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long reservationId;
-
-    private Long talentId;
-
-    private Long expertId;
-
     private String recordType;
 
     private Date creationDate;
@@ -30,4 +24,15 @@ public class DigitalRecord {
 
     private String observations;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expert_id", nullable = false)
+    private Expert expert;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "talent_id", nullable = false)
+    private Talent talent;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id", nullable = false)
+    private Reservation reservation;
 }

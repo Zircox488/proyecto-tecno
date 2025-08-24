@@ -3,6 +3,8 @@ package com.farukgenc.boilerplate.springboot.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -30,5 +32,11 @@ public class User {
 
 	@Enumerated(EnumType.STRING)
 	private UserRole userRole;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Notification> notifications;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SessionLog> sessionLogs;
 
 }

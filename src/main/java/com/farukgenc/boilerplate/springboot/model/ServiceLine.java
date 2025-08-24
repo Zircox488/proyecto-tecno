@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "service_lines")
 @Getter
@@ -19,4 +21,10 @@ public class ServiceLine {
 
     @Column(unique = true)
     private String serviceLineName;
+
+    @OneToMany(mappedBy = "serviceLine", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Expert> experts;
+
+    @OneToMany(mappedBy = "serviceLine", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Resource> resources;
 }

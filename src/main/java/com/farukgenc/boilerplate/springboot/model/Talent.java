@@ -11,13 +11,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Talent {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private long userId;
+public class Talent extends User {
+    
     @Column(unique = true)
     private String associatedProject;
-
 }

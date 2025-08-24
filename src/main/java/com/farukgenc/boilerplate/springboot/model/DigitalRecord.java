@@ -14,13 +14,13 @@ import java.util.Date;
 public class DigitalRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long reservationId;
+    private Long reservationId;
 
-    private long talentId;
+    private Long talentId;
 
-    private long expertId;
+    private Long expertId;
 
     private String recordType;
 

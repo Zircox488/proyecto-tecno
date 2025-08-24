@@ -11,13 +11,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Expert {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private long userId;
-
-    private long lineId;
-
+public class Expert extends User {
+    
+    private Long lineId;
 }

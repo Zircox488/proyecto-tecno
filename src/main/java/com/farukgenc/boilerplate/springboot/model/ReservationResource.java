@@ -14,10 +14,10 @@ import java.util.Date;
 public class ReservationResource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long reservationId;
+    private Long reservationId;
 
-    private long resourceId;
+    private Long resourceId;
 
 }
